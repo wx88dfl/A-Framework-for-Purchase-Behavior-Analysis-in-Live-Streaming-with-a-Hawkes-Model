@@ -1,22 +1,17 @@
-Parameter Selection Justification
-Perplexity (30):
-Empirical Testing: We tested perplexity values [5, 10, 15, 20, 25, 30, 35, 40, 45, 50]
+Prior to dimensionality reduction, the feature vectors were standardized using Z-score normalization to ensure balanced contributions from all dimensions during distance calculation. The t-SNE algorithm was implemented using the TSNE class from the scikit-learn library (v1.0.0), consistent with the other data processing steps in the study.
 
-Optimal Range: 25-35 provided the best balance between local and global structure preservation
+The key parameters configured for the t-SNE analysis were:
 
-Dataset Size Consideration: For n=12,899 samples, perplexity=30 aligns with the recommended range of 5-50
+n_components: 2
 
-Number of Iterations (1000):
-Convergence Monitoring: We verified that KL divergence stabilized after ~800 iterations
+random_state: 42 (to ensure the reproducibility of all stochastic processes, as stated in the experimental setup)
 
-Safety Margin: 1000 iterations ensured complete convergence across multiple runs
+perplexity: 30 (a standard value suitable for the dataset size)
 
-Computational Efficiency: Balanced between quality and computation time
+n_iter: 1000 (standard optimization iterations)
 
-Learning Rate (200):
-Standard Practice: Used the scikit-learn default value
+init: 'pca' (for stable initialization)
 
-Validation: Tested values [100, 200, 300] with minimal differences in results.
+learning_rate: 'auto'
 
-
- The t-SNE visualizations in Figures 6 and 7 were generated using scikit-learn's TSNE implementation (v1.0.0) in Python. Feature vectors (64-dimensional) extracted from our ODE-LSTM encoder outputs were standardized using StandardScaler before dimensionality reduction. The t-SNE algorithm was configured with the following parameters: perplexity=30, n_iter=1000, learning_rate=200, early_exaggeration=12.0, random_state=42, and metric='euclidean'. The perplexity value was selected through empirical testing to optimally balance local and global structure preservation for our dataset size (n=12,899). All visualizations used consistent random seeding to ensure reproducibility across multiple runs.
+This parameter set aligns with established best practices for achieving stable, interpretable, and reproducible two-dimensional embeddings, which effectively demonstrate the model's capability to separate distinct behavioral clusters.
