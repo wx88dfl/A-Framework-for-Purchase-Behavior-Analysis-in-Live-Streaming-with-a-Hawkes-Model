@@ -1,0 +1,71 @@
+users.csv
+user_id: Unique identifier for each user.  
+gender: User’s gender (e.g., male, female, non-binary).  
+age: User’s age in years.  
+user_tier: Membership level (e.g., Bronze, Silver, Gold).  
+city: User’s city of residence.  
+registration_date: Date when the user signed up.  
+platform_experience_months: Total months since user joined the platform.
+
+live_rooms.csv
+Room_id: Unique identifier for the live broadcast room (corresponding to the Live Broadcast Room ID in the paper)
+Streamer.id: Anchor ID
+Shopify ID: Store ID (for merchants with over 10000 followers)
+Room_title: Live room title (used for Word2Vec text feature extraction)
+Category: Product Category Code (1-5 Categories)
+Start_time/end_time: start and end time of the live broadcast
+Total products: The total number of products in this live broadcast
+Follower_count: Number of followers in the store (paper requirement>10000)
+Streamer_grade: Anchor Level
+Avg.rating: Average rating of broadcasters
+Historic_Success_rate: Success rate of historical live broadcasts
+
+user_behavior_sequences.csv
+Sequence_id: Unique identifier for the behavior sequence
+User_id, room_id: User and live room identifier (forming a quadruple in the paper)
+Behavior_type: Behavior type encoding (1: Watch, 2: Order, 3: Favorite, 4: Cancel Favorite)
+Timestamp: Behavior occurrence timestamp (accurate to seconds, used for Hawkes process modeling)
+Product_id: Associated product ID
+Duration: Viewing duration (seconds, only applicable to viewing behavior)
+Interaction-intensity: interaction strength (0-1, used for strength function calculation)
+Event_index_in_dession: The event sequence number in the session
+Session duration: Total session duration (seconds)
+
+quality_labels.csv
+Watch_to-order_time: The time (in seconds) from the start of viewing to placing an order, corresponding to the time in the paper for watch_to-order
+Watch_to-favorite_time: The time (in seconds) from the start of viewing to bookmarking
+Total participation time (seconds, corresponding to Ttotal in the paper)
+Order_comunt: Number of orders placed
+Favorite_comunt: Collection times
+Watch_to-order_ratio: viewing order ratio (core indicator of the paper)
+Favorite_ratio: Collection rate
+Quality_Level: Quality level (0-4, corresponding to the fifth level classification of papers)
+Q-value: Q value (used to cancel threshold judgment for bookmarking predictions)
+
+products.csv
+Product_i: Unique identifier of the product
+Room_id: belongs to the live streaming room
+Productname: Product name (used for text feature extraction)
+Price: Product price
+Category: Product Category
+Stock_quantity: inventory quantity
+Discount_rate: discount rate
+Product_rating: Product rating
+Sales-volume: Sales volume
+Is_Simited: Is it a limited time flash sale
+Is_fot: Is it a hot selling product
+
+bookmark_removals.csv
+Removal_id: Cancel record ID
+
+User_id, room_id: User and live room identification
+
+Removal_timestamp: Cancel time
+
+Previous_cegagement_time: The duration of participation before cancellation
+
+Removal_deason: Cancel reason encoding
+
+Q-value_fefore_move: Q-value before cancellation (paper threshold 0.5)
+
+Is_ early_learning: whether to trigger an alert
